@@ -12,7 +12,7 @@ namespace Dungeon
     {
         static void Main(string[] args)
         {
-            //Variables
+            //DECLARES VARIABLES THAT I WILL USE THROUGHOUT THE PROGRAM (MAINLY REPETION BOOLS)
             string playerName;
             bool raceSelection = true;
             bool weaponSelection = true;
@@ -29,12 +29,14 @@ ___________.__                _____       .___                             __  .
 ");
             Console.ResetColor();
             Thread.Sleep(2500);
+            //SETS THE DEFAULT RACE FOR THE PLAYER SO THEY CAN CHOOSE AN ENUM FOR DESIRED RACE
             Race playerRace = Race.Imperial;
+            //CAPTURE USER INPUT FOR THEIR DESIRED NAME
             Console.WriteLine("What is thy name?");
             playerName = Console.ReadLine();
             Thread.Sleep(500);
             Console.WriteLine($"Most well {playerName}.  Choose thy race");
-
+            //CAPTURE THE USER INPUT FOR THEIR DESIRED RACE OF CHRACTER
             do
             {
                 Console.WriteLine(
@@ -120,7 +122,7 @@ ___________.__                _____       .___                             __  .
             Console.ResetColor();
 
 
-
+            //CREATES 5 WEAPON OBJECTS FOR THE PLAYER TO CHOOSE FROM
             Weapon shortBow = new Weapon("Short Bow", 15, 6, 1, false);
             Weapon longBow = new Weapon("Long Bow", 20, 7, 1, true);
             Weapon shortSword = new Weapon("Short Sword", 10, 4, 1, false);
@@ -171,7 +173,7 @@ ___________.__                _____       .___                             __  .
                 }
             } while (weaponSelection); //end do while
 
-            Console.WriteLine(player);
+            
         }
     }
 }

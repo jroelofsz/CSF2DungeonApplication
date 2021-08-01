@@ -79,7 +79,7 @@ namespace DungeonLibrary
 
         public override string ToString()
         {
-            return string.Format($"{Name}\nRace: {PlayerRace}\nLife{Life}\nEquipped Weapon: {EquippedWeapon}");
+            return string.Format($"{Name}\nRace: {PlayerRace}\nLife: {Life}\nEquipped Weapon: {EquippedWeapon}");
         }
 
         public override int CalculateDamage()

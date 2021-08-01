@@ -15,6 +15,7 @@ namespace Dungeon
             //Variables
             string playerName;
             bool raceSelection = true;
+            bool weaponSelection = true;
 
             Console.Title = "The Adamantite Crypt";
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -37,16 +38,16 @@ ___________.__                _____       .___                             __  .
             do
             {
                 Console.WriteLine(
-                    "1) Altmer -\n" +
-                    "2) Argonian -\n" +
-                    "3) Bosmer -\n" +
-                    "4) Breton -\n" +
-                    "5) Dunmer -\n" +
-                    "6) Imperial -\n" +
-                    "7) Khajit -\n" +
-                    "8) Nord -\n" +
-                    "9) Orsimer -\n" +
-                    "0) Redguard -\n");
+                    "1) Altmer - Lower life but higher hit and block chance.\n" +
+                    "2) Argonian - Higher life but less hit and block chance.\n" +
+                    "3) Bosmer - Lower life but higher hit and block chance.\n" +
+                    "4) Breton - Higher life but less hit and block chance.\n" +
+                    "5) Dunmer - Slightly higher life and hit chance but lower block chance.\n" +
+                    "6) Imperial - Standard\n" +
+                    "7) Khajit - Lower life but higher hit and block chance.\n" +
+                    "8) Nord - Higher life but less hit and block chance.\n" +
+                    "9) Orsimer - Higher life but less hit and block chance.\n" +
+                    "0) Redguard - Lower life but higher hit and block chance.\n");
                 ConsoleKey raceChoice = Console.ReadKey(true).Key;
                 Console.Clear();
                 switch (raceChoice)
@@ -117,8 +118,60 @@ ___________.__                _____       .___                             __  .
 ");
             Console.WriteLine($"I welcome you to THE ADMANTITE CRYPT {playerName} the {playerRace}");
             Console.ResetColor();
-            
 
+
+
+            Weapon shortBow = new Weapon("Short Bow", 15, 6, 1, false);
+            Weapon longBow = new Weapon("Long Bow", 20, 7, 1, true);
+            Weapon shortSword = new Weapon("Short Sword", 10, 4, 1, false);
+            Weapon longSword = new Weapon("Long Sword", 15, 10, 1, true);
+            Weapon greatSword = new Weapon("Great Sword", 20, 8, 1, true);
+            //CAPTURES USER INPUT TO CHOOOSE THEIR DESIRED WEAPON
+            Console.WriteLine($"Choose your weapon {playerName} the {playerRace}!");
+            ConsoleKey weaponChoice;
+            Player player = new Player(playerName, 50, 50, 20, 10, shortSword, playerRace);
+            do
+            {
+                Console.WriteLine(
+                   "1) Short Bow\n" +
+                   "2) Long Bow\n" +
+                   "3) Short Sword\n" +
+                   "4) Long Sword\n" +
+                   "5) Great Sword\n");
+                weaponChoice = Console.ReadKey(true).Key;
+                switch (weaponChoice)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        player.EquippedWeapon = shortBow;
+                        weaponSelection = false;
+                        break;
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        player.EquippedWeapon = longBow;
+                        weaponSelection = false;
+                        break;
+                    case ConsoleKey.D3:
+                    case ConsoleKey.NumPad3:
+                        player.EquippedWeapon = shortSword;
+                        weaponSelection = false;
+                        break;
+                    case ConsoleKey.D4:
+                    case ConsoleKey.NumPad4:
+                        player.EquippedWeapon = longSword;
+                        weaponSelection = false;
+                        break;
+                    case ConsoleKey.D5:
+                    case ConsoleKey.NumPad5:
+                        player.EquippedWeapon = greatSword;
+                        weaponSelection = false;
+                        break;
+                    default:
+                        break;
+                }
+            } while (weaponSelection); //end do while
+
+            Console.WriteLine(player);
         }
     }
 }

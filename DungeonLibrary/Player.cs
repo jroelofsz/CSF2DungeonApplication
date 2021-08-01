@@ -74,7 +74,13 @@ namespace DungeonLibrary
                 default:
                     break;
             }
+
         }//end FQCTOR
+
+        public override string ToString()
+        {
+            return string.Format($"{Name}\nRace: {PlayerRace}\nLife{Life}\nEquipped Weapon: {EquippedWeapon}");
+        }
 
         public override int CalculateDamage()
         {

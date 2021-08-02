@@ -16,6 +16,8 @@ namespace Dungeon
             string playerName;
             bool raceSelection = true;
             bool weaponSelection = true;
+            bool menuExit = false;
+            bool reloadMenu = false;
 
             Console.Title = "The Adamantite Crypt";
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -173,7 +175,15 @@ ___________.__                _____       .___                             __  .
                 }
             } while (weaponSelection); //end do while
 
-            
+            //Menu for player to go through the dungeon
+            do
+            {
+
+                do
+                {
+
+                } while (!menuExit && !reloadMenu);
+            } while (!menuExit);
         }
     }
 }

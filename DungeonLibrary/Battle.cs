@@ -26,7 +26,14 @@ namespace DungeonLibrary
             }
         }//end Attack()
 
-       // public static void combat(Player player, /*Monster*/ monster)
+        public static void Combat(Player player, Enemy enemy)
+        {
+            Attack(player, enemy);
+            if (enemy.Life > 0)
+            {
+                Attack(enemy, player);
+            }//end if
+        }//end Combat()
 
     }
 }

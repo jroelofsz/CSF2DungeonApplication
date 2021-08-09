@@ -178,7 +178,19 @@ ___________.__                _____       .___                             __  .
             //Menu for player to go through the dungeon
             do
             {
-
+                //ROOM GET
+                //MONSTER CREATION
+                Monster vandal = new Monster("Vandal", 25, 25, 20, 15, 5, "This vandal has noticeable war scars from previous battles, proceed with caution...", 1);
+                Monster dragon = new Monster("Dragon", 50, 50, 30, 10, 15, "This dragon is guarding a pile of valuables...", 1);
+                //MONSTER ARRAY FOR RANDOM MONSTER CHOICE
+                Monster[] monsters =
+                {
+                    vandal, vandal, vandal, dragon
+                };
+                //PRINTS OUT WHAT MONSTER IS IN THE ROOM
+                Monster monster = monsters[new Random().Next(0, monsters.Length)];
+                Console.WriteLine($"In this room you see a {monster.Name}");
+                //MENU FOR 
                 do
                 {
 

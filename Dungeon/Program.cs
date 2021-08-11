@@ -16,8 +16,6 @@ namespace Dungeon
             string playerName;
             bool raceSelection = true;
             bool weaponSelection = true;
-            bool menuExit = false;
-            bool reloadMenu = false;
             int slayCount = 0;
 
             Console.Title = "The Adamantite Crypt";
@@ -126,7 +124,7 @@ ___________.__                _____       .___                             __  .
 
 
             //CREATES 5 WEAPON OBJECTS FOR THE PLAYER TO CHOOSE FROM
-            Weapon shortBow = new Weapon("Short Bow", 15, 6, 1, false);
+            Weapon shortBow = new Weapon("Short Bow", 15, 5, 1, false);
             Weapon longBow = new Weapon("Long Bow", 20, 7, 1, true);
             Weapon shortSword = new Weapon("Short Sword", 10, 4, 1, false);
             Weapon longSword = new Weapon("Long Sword", 15, 10, 1, true);
@@ -177,16 +175,17 @@ ___________.__                _____       .___                             __  .
             } while (weaponSelection); //end do while
 
             //Menu for player to go through the dungeon
+            bool menuExit = false;
             do
             {
                 //ROOM GET
                 Console.WriteLine($"\n{Room.RoomGet()}\n");
                 //MONSTER CREATION
-                Enemy vandal = new Enemy("Vandal", 25, 25, 20, 15, 1, 5, "This vandal has noticeable war scars from previous battles, proceed with caution...");
-                Enemy dragon = new Enemy("Dragon", 50, 50, 30, 10, 15, 1, "This dragon is guarding a pile of valuables...");
-                Enemy orc = new Enemy("Orc", 30, 30, 15, 15, 4, 8, "This orc has blood dripping from his arms... he has clearly hurt someone...");
-                Enemy tiger = new Enemy("Tiger", 35, 35, 10, 20, 1, 6, "This tiger is foaming at the mouth... it appears ready for a meal.. don't be it.");
-                Enemy giantBat = new Enemy("Giant Bat", 35, 35, 20, 15, 3, 8, "This bat is at least the size of TEN men.");
+                Enemy vandal = new Enemy("Vandal", 25, 25, 10, 25, 1, 5, "This vandal has noticeable war scars from previous battles, proceed with caution...");
+                Enemy dragon = new Enemy("Dragon", 50, 50, 20, 20, 15, 1, "This dragon is guarding a pile of valuables...");
+                Enemy orc = new Enemy("Orc", 30, 30, 10, 25, 4, 8, "This orc has blood dripping from his arms... he has clearly hurt someone...");
+                Enemy tiger = new Enemy("Tiger", 35, 15, 10, 20, 1, 6, "This tiger is foaming at the mouth... it appears ready for a meal.. don't be it.");
+                Enemy giantBat = new Enemy("Giant Bat", 20, 35, 20, 25, 3, 8, "This bat is at least the size of TEN men.");
                 //MONSTER ARRAY FOR RANDOM MONSTER CHOICE
                 Enemy[] enemies =
                 {
@@ -195,7 +194,8 @@ ___________.__                _____       .___                             __  .
                 //PRINTS OUT WHAT MONSTER IS IN THE ROOM
                 Enemy enemy = enemies[new Random().Next(0, enemies.Length)];
                 Console.WriteLine($"In this room you see a {enemy.Name}");
-                //MENU FOR 
+                //SETS RELOADMENU TO FALSE FOR MENU REPEAT
+                bool reloadMenu = false;
                 do
                 {
                     Console.Title = $"Health: {player.Life}  Enemies Slain: {slayCount}";
@@ -221,22 +221,34 @@ ___________.__                _____       .___                             __  .
                                 reloadMenu = true;
                                 Thread.Sleep(1500);
                                 slayCount++;
-                            }
+                            }//END IF
                             break;
                         case ConsoleKey.D2:
                         case ConsoleKey.NumPad2:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Coward...");
+                            Console.WriteLine("You flee");
+                            Console.ResetColor();
+                            Console.WriteLine($"The {enemy.Name} takes one more shot!");
+                            Battle.Attack(enemy, player);
+                            reloadMenu = true;
                             break;
                         case ConsoleKey.D3:
                         case ConsoleKey.NumPad3:
+                            //TODO Added functionality for players stats
                             break;
                         case ConsoleKey.D4:
                         case ConsoleKey.NumPad4:
+                            //TODO Add funtionality for monster stats
                             break;
-                        
+                        case ConsoleKey.Escape:
+                            Console.WriteLine("Thank you for playing!");
+                            menuExit = true;
+                            break;
                         default:
                             break;
                     }
-                } while (!menuExit && !reloadMenu);
+                } while (reloadMenu == false && menuExit == false);
             } while (!menuExit);
         }
     }

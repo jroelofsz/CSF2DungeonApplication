@@ -10,8 +10,9 @@ namespace DungeonLibrary
     {
         public static void Attack(Character attacker, Character defender)
         {
-            int rollDice = new Random().Next(1, 101);
+            int rollDice = new Random().Next(1, 51);
 
+            System.Threading.Thread.Sleep(35);
             if (rollDice <= attacker.CalculateHitChance() - defender.CalculateBlockChance())
             {
                 int damage = attacker.CalculateDamage();

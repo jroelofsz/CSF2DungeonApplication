@@ -18,6 +18,7 @@ namespace Dungeon
             bool weaponSelection = true;
             bool menuExit = false;
             bool reloadMenu = false;
+            int slayCount = 0;
 
             Console.Title = "The Adamantite Crypt";
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -179,21 +180,62 @@ ___________.__                _____       .___                             __  .
             do
             {
                 //ROOM GET
+                Console.WriteLine($"\n{Room.RoomGet()}\n");
                 //MONSTER CREATION
-                Monster vandal = new Monster("Vandal", 25, 25, 20, 15, 5, "This vandal has noticeable war scars from previous battles, proceed with caution...", 1);
-                Monster dragon = new Monster("Dragon", 50, 50, 30, 10, 15, "This dragon is guarding a pile of valuables...", 1);
+                Enemy vandal = new Enemy("Vandal", 25, 25, 20, 15, 1, 5, "This vandal has noticeable war scars from previous battles, proceed with caution...");
+                Enemy dragon = new Enemy("Dragon", 50, 50, 30, 10, 15, 1, "This dragon is guarding a pile of valuables...");
+                Enemy orc = new Enemy("Orc", 30, 30, 15, 15, 4, 8, "This orc has blood dripping from his arms... he has clearly hurt someone...");
+                Enemy tiger = new Enemy("Tiger", 35, 35, 10, 20, 1, 6, "This tiger is foaming at the mouth... it appears ready for a meal.. don't be it.");
+                Enemy giantBat = new Enemy("Giant Bat", 35, 35, 20, 15, 3, 8, "This bat is at least the size of TEN men.");
                 //MONSTER ARRAY FOR RANDOM MONSTER CHOICE
-                Monster[] monsters =
+                Enemy[] enemies =
                 {
-                    vandal, vandal, vandal, dragon
+                    vandal, vandal, vandal, dragon, orc, orc, orc, tiger, tiger, giantBat
                 };
                 //PRINTS OUT WHAT MONSTER IS IN THE ROOM
-                Monster monster = monsters[new Random().Next(0, monsters.Length)];
-                Console.WriteLine($"In this room you see a {monster.Name}");
+                Enemy enemy = enemies[new Random().Next(0, enemies.Length)];
+                Console.WriteLine($"In this room you see a {enemy.Name}");
                 //MENU FOR 
                 do
                 {
+                    Console.Title = $"Health: {player.Life}  Enemies Slain: {slayCount}";
+                    Console.WriteLine("Choose an deed:\n" +
+                        "1) Attack\n" +
+                        "2) Run Away\n" +
+                        "3) Player Stats\n" +
+                        "4) Monster Stats\n");
+                    ConsoleKey userChoice = Console.ReadKey(true).Key;
+                    Console.Clear();
 
+                    switch (userChoice)
+                    {
+                        case ConsoleKey.D1:
+                        case ConsoleKey.NumPad1:
+                            //Attack sequence
+                            Battle.Combat(player, enemy);
+                            if (enemy.Life <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine($"You slayed the {enemy.Name}");
+                                Console.ResetColor();
+                                reloadMenu = true;
+                                Thread.Sleep(1500);
+                                slayCount++;
+                            }
+                            break;
+                        case ConsoleKey.D2:
+                        case ConsoleKey.NumPad2:
+                            break;
+                        case ConsoleKey.D3:
+                        case ConsoleKey.NumPad3:
+                            break;
+                        case ConsoleKey.D4:
+                        case ConsoleKey.NumPad4:
+                            break;
+                        
+                        default:
+                            break;
+                    }
                 } while (!menuExit && !reloadMenu);
             } while (!menuExit);
         }

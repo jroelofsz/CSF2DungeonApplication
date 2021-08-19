@@ -17,6 +17,7 @@ namespace Dungeon
             bool raceSelection = true;
             bool weaponSelection = true;
             int slayCount = 0;
+            double playerExp = 0;
 
             Console.Title = "The Adamantite Crypt";
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -221,6 +222,88 @@ ___________.__                _____       .___                             __  .
                                 reloadMenu = true;
                                 Thread.Sleep(1500);
                                 slayCount++;
+                                switch (slayCount)
+                                {
+                                    case 1:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 2:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 3:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 4:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 5:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 6:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 7:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 8:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 9:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 10:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    default:
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine("Something with catostrophically wrong... please restart the application.");
+                                        Console.ResetColor();
+                                        menuExit = true;
+                                        break;
+                                }
+                                if (playerExp >= 15)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("You've earned 15 exp!. You are now level 1.");
+                                    Console.ResetColor();
+                                    //TODO Add Shop functionality
+                                } 
+                                else if (playerExp >= 45)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine("You've earned a total of 15 exp! You are not level 2")
+                                    //TODO Add rewards functionality
+                                }
                             }//END IF
                             break;
                         case ConsoleKey.D2:
@@ -235,11 +318,11 @@ ___________.__                _____       .___                             __  .
                             break;
                         case ConsoleKey.D3:
                         case ConsoleKey.NumPad3:
-                            //TODO Added functionality for players stats
+                            Console.WriteLine(player);
                             break;
                         case ConsoleKey.D4:
                         case ConsoleKey.NumPad4:
-                            //TODO Add funtionality for monster stats
+                            Console.WriteLine(enemy);
                             break;
                         case ConsoleKey.Escape:
                             Console.WriteLine("Thank you for playing!");

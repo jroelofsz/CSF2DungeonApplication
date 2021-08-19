@@ -179,14 +179,14 @@ ___________.__                _____       .___                             __  .
             bool menuExit = false;
             do
             {
-                //ROOM GET
+                //ROOM GET1
                 Console.WriteLine($"\n{Room.RoomGet()}\n");
                 //MONSTER CREATION
-                Enemy vandal = new Enemy("Vandal", 25, 25, 10, 25, 1, 5, "This vandal has noticeable war scars from previous battles, proceed with caution...");
-                Enemy dragon = new Enemy("Dragon", 50, 50, 20, 20, 15, 1, "This dragon is guarding a pile of valuables...");
-                Enemy orc = new Enemy("Orc", 30, 30, 10, 25, 4, 8, "This orc has blood dripping from his arms... he has clearly hurt someone...");
-                Enemy tiger = new Enemy("Tiger", 35, 15, 10, 20, 1, 6, "This tiger is foaming at the mouth... it appears ready for a meal.. don't be it.");
-                Enemy giantBat = new Enemy("Giant Bat", 20, 35, 20, 25, 3, 8, "This bat is at least the size of TEN men.");
+                Enemy vandal = new Enemy("Vandal", 25, 25, 6, 25, 1, 5, "This vandal has noticeable war scars from previous battles, proceed with caution...");
+                Enemy dragon = new Enemy("Dragon", 50, 50, 5, 20, 1, 10, "This dragon is guarding a pile of valuables...");
+                Enemy orc = new Enemy("Orc", 30, 30, 8, 12, 1, 6, "This orc has blood dripping from his arms... he has clearly hurt someone...");
+                Enemy tiger = new Enemy("Tiger", 35, 15, 10, 10, 1, 6, "This tiger is foaming at the mouth... it appears ready for a meal.. don't be it.");
+                Enemy giantBat = new Enemy("Giant Bat", 20, 35, 5, 15, 1, 8, "This bat is at least the size of TEN men.");
                 //MONSTER ARRAY FOR RANDOM MONSTER CHOICE
                 Enemy[] enemies =
                 {
@@ -204,7 +204,8 @@ ___________.__                _____       .___                             __  .
                         "1) Attack\n" +
                         "2) Run Away\n" +
                         "3) Player Stats\n" +
-                        "4) Monster Stats\n");
+                        "4) Monster Stats\n" +
+                        "5) Store Menu\n");
                     ConsoleKey userChoice = Console.ReadKey(true).Key;
                     Console.Clear();
 
@@ -284,6 +285,66 @@ ___________.__                _____       .___                             __  .
                                         Console.ResetColor();
                                         playerExp += 15;
                                         break;
+                                    case 11:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 12:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 13:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 14:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 15:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 16:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 17:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 18:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 19:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
+                                    case 20:
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("You've earned 15 exp!");
+                                        Console.ResetColor();
+                                        playerExp += 15;
+                                        break;
                                     default:
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.WriteLine("Something with catostrophically wrong... please restart the application.");
@@ -291,20 +352,14 @@ ___________.__                _____       .___                             __  .
                                         menuExit = true;
                                         break;
                                 }
-                                if (playerExp >= 15)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.WriteLine("You've earned 15 exp!. You are now level 1.");
-                                    Console.ResetColor();
-                                    //TODO Add Shop functionality
-                                } 
-                                else if (playerExp >= 45)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.WriteLine("You've earned a total of 15 exp! You are not level 2")
-                                    //TODO Add rewards functionality
-                                }
                             }//END IF
+                            if (player.Life <= 0)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($"You have not lived up to your name {player.Name}. You have been last in the echos of time at The Admantite Crypt");
+                                Console.ResetColor();
+                                menuExit = true;
+                            }
                             break;
                         case ConsoleKey.D2:
                         case ConsoleKey.NumPad2:
@@ -323,6 +378,63 @@ ___________.__                _____       .___                             __  .
                         case ConsoleKey.D4:
                         case ConsoleKey.NumPad4:
                             Console.WriteLine(enemy);
+                            break;
+                        case ConsoleKey.D5:
+                        case ConsoleKey.NumPad5:
+                            bool shopMenuExit = false;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("THE ADMANTITE CRYPT STORE");
+                                Console.ResetColor();
+                                Console.WriteLine("1) Heal - 15exp\n" +
+                                    "2) Increase Max Damage - 15exp\n" +
+                                    "3) Exit");
+                                ConsoleKey userShopInput = Console.ReadKey(true).Key;
+                                Console.Clear();
+                                switch (userShopInput)
+                                {
+                                    case ConsoleKey.NumPad1:
+                                    case ConsoleKey.D1:
+                                        if (playerExp >= 15)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Green;
+                                            Console.WriteLine("You topped of your health!");
+                                            Console.ResetColor();
+                                            player.Life = player.MaxLife;
+                                            playerExp -= 15;
+                                            shopMenuExit = true;
+                                            break;
+                                        }
+                                        Console.WriteLine("You don't have enough EXP. Try again later.");
+                                        shopMenuExit = true;
+                                        break;
+                                    case ConsoleKey.NumPad2:
+                                    case ConsoleKey.D2:
+                                        if (playerExp >= 15)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Green;
+                                            Console.WriteLine("You increased you max damage by 2!");
+                                            Console.ResetColor();
+                                            player.EquippedWeapon.MaxDamage += 2;
+                                            player.EquippedWeapon.HitChanceBonus += 10;
+                                            shopMenuExit = true;
+                                            break;
+                                        }
+                                        Console.WriteLine("You don't have enought EXP. Try again later.");
+                                        shopMenuExit = true;
+                                        break;
+                                    case ConsoleKey.NumPad3:
+                                    case ConsoleKey.D3:
+                                        shopMenuExit = true;
+                                        break;
+
+                                    default:
+                                        Console.WriteLine("Something went wrong.. Most likely you hit the wrong key. Don't do that again.");
+                                        shopMenuExit = true;
+                                        break;
+                                }
+                            } while (!shopMenuExit);
                             break;
                         case ConsoleKey.Escape:
                             Console.WriteLine("Thank you for playing!");

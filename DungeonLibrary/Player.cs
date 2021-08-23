@@ -45,7 +45,7 @@ namespace DungeonLibrary
                     Life += 5;
                     MaxLife += 5;
                     HitChance += 5;
-                    BlockChance -= 10;
+                    BlockChance -= 4;
                     break;
                 case Race.Khajit:
                     Life -= 10;
@@ -68,8 +68,8 @@ namespace DungeonLibrary
                 case Race.Redguard:
                     Life -= 10;
                     MaxLife -= 10;
-                    HitChance += 10;
-                    BlockChance += 5;
+                    HitChance += 5;
+                    BlockChance += 2;
                     break;
                 default:
                     break;

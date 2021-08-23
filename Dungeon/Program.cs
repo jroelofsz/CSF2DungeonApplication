@@ -183,9 +183,9 @@ ___________.__                _____       .___                             __  .
                 Console.WriteLine($"\n{Room.RoomGet()}\n");
                 //MONSTER CREATION
                 Enemy vandal = new Enemy("Vandal", 25, 25, 6, 25, 1, 5, "This vandal has noticeable war scars from previous battles, proceed with caution...");
-                Enemy dragon = new Enemy("Dragon", 50, 50, 5, 20, 1, 10, "This dragon is guarding a pile of valuables...");
-                Enemy orc = new Enemy("Orc", 30, 30, 8, 12, 1, 6, "This orc has blood dripping from his arms... he has clearly hurt someone...");
-                Enemy tiger = new Enemy("Tiger", 35, 15, 10, 10, 1, 6, "This tiger is foaming at the mouth... it appears ready for a meal.. don't be it.");
+                Enemy dragon = new Enemy("Dragon", 50, 50, 5, 10, 1, 10, "This dragon is guarding a pile of valuables...");
+                Enemy orc = new Enemy("Orc", 30, 30, 10, 10, 1, 5, "This orc has blood dripping from his arms... he has clearly hurt someone...");
+                Enemy tiger = new Enemy("Tiger", 35, 35, 8, 8, 1, 6, "This tiger is foaming at the mouth... it appears ready for a meal.. don't be it.");
                 Enemy giantBat = new Enemy("Giant Bat", 20, 35, 5, 15, 1, 8, "This bat is at least the size of TEN men.");
                 //MONSTER ARRAY FOR RANDOM MONSTER CHOICE
                 Enemy[] enemies =
